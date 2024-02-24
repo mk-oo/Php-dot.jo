@@ -21,6 +21,11 @@ require_once(BASE_PATH . '/Controller/logic.php');
 // }
 // $from =
 // getAllCardsByLimit();
+
+
+$catgeories = getAllCategories();
+
+
 ?>
 
 <!doctype html>
@@ -47,16 +52,12 @@ require_once(BASE_PATH . '/Controller/logic.php');
                 <form>
                     <div class="row g-3 my-4">
                         <div class="col-auto">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Select Category</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
+                        <?php
+            
+                            require(BASE_PATH.'/View/Categories.php');
+                        
+                        ?>
 
-                        <div class="col-auto">
-                            <button type="submit" class="btn btn-primary">Search</button>
                             <button class="btn btn-primary"><a style="text-decoration:none; color:white" href="<?=BASE_URL.'/View/insertCard.php'?>"> Add Blog</a></button> 
 
                         </div>

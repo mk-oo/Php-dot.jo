@@ -11,8 +11,8 @@ if(isset($_POST['id-insert'])){
 
     $title = mysqli_real_escape_string(getConnection(),$_POST['title']);
     $description = mysqli_real_escape_string(getConnection(),$_POST['description']);
- 
-    insertCard($title,$description,$file_name);
+    $category = $_POST['category'];
+    insertCard($title,$description,$file_name,$category);
 
     if(move_uploaded_file($tempname,$folder) ){
         echo 'echo inserted ';
@@ -24,6 +24,8 @@ if(isset($_POST['id-insert'])){
 
 
 }
+$catgeories = getAllCategories();
+
 ?>
 
 
@@ -37,6 +39,21 @@ if(isset($_POST['id-insert'])){
 
     <label for="image"> image: </label>
     <input type="file" name= "image" required >
+
+
+
+    <select class="form-select" aria-label="Default select example" name= "category">
+
+        <option selected>Select Category</option>
+
+        <?php
+        foreach($catgeories as $cat){
+        ?>
+            <option value= "<?=$cat['PK']?>"><?=$cat['NAME']?> </option>
+        <?php
+        }?> 
+
+    </select>
 
     <input type="submit" name="id-insert" value="Add blog">
 

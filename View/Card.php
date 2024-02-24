@@ -5,7 +5,8 @@ require_once(BASE_PATH . '/Controller/logic.php');
 
 $cards = getAllCards();
 
-$total_rows = mysqli_num_rows($cards);
+$total_rows = count($cards);
+
 
 $total_per_page = 2;
 
@@ -18,8 +19,16 @@ $from = ($page-1) * $total_per_page;
 
 $total = ceil($total_rows / $total_per_page);
 
+if(isset($_GET['category']) && is_numeric($_GET['category'])){
 
-$cards = getAllCardsByLimit($from,$total_per_page);
+    $cards = getAllCardsByLimit( $_GET['category'],$from,$total_per_page);
+
+}else{
+
+    $cards = getAllCardsByLimit(null,$from,$total_per_page);
+
+}
+
 
 ?>
 <?php foreach($cards as $card){
