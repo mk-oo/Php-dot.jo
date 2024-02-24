@@ -3,29 +3,6 @@
 require_once('config.php');
 require_once(BASE_PATH . '/Controller/logic.php');
 
-
-// $cards = getAllCards();
-// $total_records = mysqli_num_rows($cards);
-// $num_per_page = 2;
-
-// $total_pages = ceil($total_records / $num_per_page);
-
-
-// if($_GET['page']){
-
-//     $page = $_GET['page'];
-
-// }
-// else{
-//     $page = 1;
-// }
-// $from =
-// getAllCardsByLimit();
-
-
-$catgeories = getAllCategories();
-
-
 ?>
 
 <!doctype html>
@@ -52,6 +29,8 @@ $catgeories = getAllCategories();
                 <form>
                     <div class="row g-3 my-4">
                         <div class="col-auto">
+
+                        <!-- Categories Component -->
                         <?php
             
                             require(BASE_PATH.'/View/Categories.php');

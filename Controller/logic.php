@@ -27,7 +27,7 @@ function getAllCardsByLimit($category ,$from,$to){
         $type = 'i';
         $vals = [$category,$from,$to];
     }
-    
+
     $sql = "SELECT * FROM CARD ".$sql_Condition." LIMIT ?,?";
     $result = getRows($sql,'ii'.$type,$vals);
     return $result;
@@ -52,23 +52,18 @@ function deleteCard($id){
 function getAllCategories(){
 
     $sql = "SELECT PK,NAME FROM Categories ";
-    $result = mysqli_query(getConnection(), $sql);
+    $result = getRows($sql);
 
     return $result;
 }
 
-// function getCardsWithCategory($category){
+function updateCard($pk,$title, $description,$image,$category){
 
-    
-//     $sql = "SELECT C.* FROM CARD C 
-//     INNER JOIN categories cat on C.Categories = cat.pk
-//     WHERE cat.pk = ?";
-//     $result = getRows($sql,'i',[$category]);
+    $sql = "UPDATE CARD SET title = ?,description = ?, image = ?, categories = ? WHERE PK = ?";
 
-//     return $result;
+    execute($sql, 'sssii', [$title,$description,$image,$category,$pk]);
 
-
-// }
+}
 
 
 

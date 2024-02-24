@@ -45,6 +45,12 @@ if(isset($_GET['category']) && is_numeric($_GET['category'])){
                             <input type="submit" class="btn btn-danger" name="delete" value="DELETE">
                             
                         </form>
+
+                        <form action="<?=BASE_URL.'/View/updateCard.php'?>" method="POST">
+                            <input type="hidden" name="id-update" value="<?=$card['pk']?>">
+                            <input type="submit" class="btn btn-info" name="update" value="UPDATE">
+                            
+                        </form>
                     </div>
                 </div>
             </div>
